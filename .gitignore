@@ -27,5 +27,5 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-dump4test
-cache4test
+dump4test/
+cache4test/

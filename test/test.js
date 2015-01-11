@@ -54,32 +54,34 @@ describe('Basic functions in NCE', function(){
   });
 });
 describe('Methods of the extension', function(){
-  var nce = new NCE({amd:{dumpPath:__dirname + "/../dump4test"}});
+  var nce = new NCE({sass:{dumpPath:__dirname + "/../dump4test", cachePath:__dirname + "/../cache4test"}});
   var ext = Ext(nce);
   var extMgr = ExtMgr(nce);
   extMgr.activateExtension(extMgr);
   extMgr.activateExtension(ext);
   
-  var fnStr = fs.readFileSync(__dirname + "/../example4test.js").toString();
+  var sassStr = fs.readFileSync(__dirname + "/../example4test.sass").toString();
   
-  it('should define a function without minifing', function(done){
-    ext.define("test", fnStr, done, {minify:false});
+  it('should define sass', function(done){
+    ext.define("test", sassStr, done);
   });
-  it('should get a defined function', function(done){
-    ext.get("test", function(err, code){
-      if(code.toString() === fnStr) return done();
+  it('should get a defined sass', function(done){
+    ext.getSass("test", function(err, code){
+      if(code.toString() === sassStr) return done();
       return done(new Error("Wrong Code"));
     });
   });
-  it('should define a function with minifing', function(done){
-    ext.define("test", fnStr, done);
+  it('should render function', function(done){
+    ext.render("test", function(err, result){
+      done(err);
+    });
   });
-  it('should get minified code', function(done){
-    ext.get("test", function(err, code){
-      if(fnStr.length <= code.toString().length) {
-        return done(new Error("Code was not minified"));
-      }
-      return done();
+  it('should get rendered css', function(done){
+    ext.getCss("test", function(err, data){
+      if(err) return done(err);
+      data = data.toString();
+      if(data.indexOf("body")>=0 && data.indexOf("font")>=0 && data.indexOf("Helvetica")>=0 && data.indexOf("sans-serif")>=0 && data.indexOf("color")>=0) return done();
+      done(new Error("Incorrect css code"));
     });
   });
 });
