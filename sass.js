@@ -4,7 +4,6 @@ var fs = require("fs");
 var sass = require("node-sass"); // TODO: is it right?
 var md5 = require("MD5");
 var path = require("path");
-var _ = require("underscore");
 
 // TODO: maybe use nce-cache
 
