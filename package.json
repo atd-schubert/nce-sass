@@ -1,0 +1,39 @@
+{
+  "name": "nce-sass",
+  "version": "0.0.1",
+  "description": "A sass implemention for nce",
+  "main": "sass.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atd-schubert/nce-sass.git"
+  },
+  "keywords": [
+    "cms",
+    "nce",
+    "middleware",
+    "sass"
+  ],
+  "author": "Arne Schubert <atd.schubert@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atd-schubert/nce-sass/issues"
+  },
+  "homepage": "https://github.com/atd-schubert/nce-sass",
+  "dependencies": {
+    "MD5": "^1.2.1",
+    "node-sass": "^2.0.0-beta",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "nce": "0.1.0",
+    "nce-extension-manager": "0.0.1",
+    "nce-winston": "0.0.2"
+  },
+  "peerDependencies": {
+    "nce": "0.1.0",
+    "nce-winston": "0.0.2"
+  }
+}
