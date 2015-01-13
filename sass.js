@@ -152,7 +152,11 @@ module.exports = function(nce){
       if(err) return cb(err);
       ext.emit("undefine", {name:name});
       ext.emit("undefine:"+name, {name:name});
-      return cb();
+      fs.unlink(ext.config.cachePath + "/" + name + ".css", function(err){
+        if(err && err.message && err.message.indexOf("ENOENT"))  return cb();
+        if(err) return cb(err);
+        return cb();
+      });
     })
   };
   ext.render = function(name, cb, opts){
