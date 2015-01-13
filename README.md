@@ -1,4 +1,4 @@
-# AMD extension for NCE
+# SASS extension for NCE
 ## Description
 A [SASS](http://sass-lang.com/) implementation for [nce framework](https://github.com/atd-schubert/node-nce)
 
